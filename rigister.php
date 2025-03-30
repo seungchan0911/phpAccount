@@ -1,6 +1,8 @@
 <?php
 include 'db.php';
 
+session_start();
+
 $id = $_POST['id'];
 $password = $_POST['password'];
 $name = $_POST['name'];
@@ -29,6 +31,7 @@ $sql = 'INSERT INTO user (id, password, salt, name, email, created_at) VALUES (?
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$id, $hashed_password, $salt, $name, $email, $created_at]);
 
-echo '<script>alert("회원가입에 성공하셨습니다!")</script>';
+$_SESSION['join_success'] = 'Join successful!';
+
 echo '<script>location.href = "login.php"</script>';
 ?>

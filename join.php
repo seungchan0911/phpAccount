@@ -18,7 +18,7 @@ include "db.php";
 				<form method="post" action="rigister.php">
 					<div class="login-box">
 						<div class="input-group">
-							<input type="text" class="login-input" placeholder="id" name="id" required>
+							<input type="text" class="login-input" placeholder="ID" name="id" required>
 							<input type="password" class="login-input" placeholder="password" name="password" required>
 							<input type="text" class="login-input" placeholder="name" name="name" required>
 							<input type="text" class="login-input" placeholder="email" name="email" required>

@@ -1,5 +1,7 @@
 <?php
 include "db.php";
+
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -12,13 +14,25 @@ include "db.php";
 </head>
 <body>
     <div class="container">
+        <?php
+        if (isset($_SESSION['join_success'])) {
+            echo "<a href='login.php' class='messege'>" . $_SESSION['join_success'] . "</a>";
+            unset($_SESSION['join_success']);
+        } elseif (isset($_SESSION['logout'])) {
+            echo "<a href='login.php' class='messege'>" . $_SESSION['logout'] . "</a>";
+            unset($_SESSION['logout']);
+        } elseif (isset($_SESSION['error'])) {
+            echo "<a href='login.php' class='messege'>" . $_SESSION['error'] . "</a>";
+            unset($_SESSION['error']);
+        }
+        ?>
         <div class="login-container">
             <div class="login-frame">
                 <h1>Log in</h1>                            
                 <form method="post" action="login_check.php">
                     <div class="login-box">
                         <div class="input-group">
-                            <input type="text" class="login-input" placeholder="id" name="id" required>
+                            <input type="text" class="login-input" placeholder="ID" name="id" required>
                             <input type="password" class="login-input" placeholder="password" name="password" required>
                         </div>
                         <div class="button-group">

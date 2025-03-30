@@ -22,11 +22,11 @@ if ($user) {
 
     echo "<script>location.href = 'login_success.php'</script>";
   } else {
-    echo "<script>alert('아이디 또는 비밀번호가 잘못되었습니다.')</script>";
+    $_SESSION['error'] = "ID or password is incorrect!";
     echo "<script>location.href = 'login.php'</script>";
   }
 } else {
-  echo "<script>alert('아이디 또는 비밀번호가 잘못되었습니다.')</script>";
+  $_SESSION['error'] = "ID or password is incorrect!";
   echo "<script>location.href = 'login.php'</script>";
 }
 ?>

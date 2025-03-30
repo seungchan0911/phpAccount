@@ -25,7 +25,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php if ($users): ?>
           <div class="users-info">
             <div class="thead">
-                <div class="thcontents">id</div>
+                <div class="thcontents">ID</div>
                 <div class="thcontents">name</div>
                 <div class="thcontents">email</div>
                 <div class="thcontents">date/time</div>
