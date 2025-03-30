@@ -32,8 +32,8 @@ session_start();
                 <form method="post" action="login_check.php">
                     <div class="login-box">
                         <div class="input-group">
-                            <input type="text" class="login-input" placeholder="ID" name="id" required>
-                            <input type="password" class="login-input" placeholder="password" name="password" required>
+                            <input type="text" class="login-input oEInput" placeholder="ID" name="id" autocomplete="off" maxlength="15" required>
+                            <div class="input"><input type="password" class="login-input oEInput" placeholder="password" name="password" autocomplete="off" maxlength="15" required><div class="eye"><img src="./img/eye.png" alt=""></div></div>
                         </div>
                         <div class="button-group">
                             <button class="button" type="submit">log in</button>
@@ -44,5 +44,43 @@ session_start();
             </div>
         </div>
     </div>
+
+    <script>
+		const eye = document.querySelector('.eye')
+		const eyeImg = document.querySelector('.eye img')
+		const input = document.querySelector('.input input')
+		let i = true
+        eye.addEventListener('mouseenter', () => {
+            eye.parentNode.classList.add('input-active')
+        })
+        eye.addEventListener('mouseout', () => {
+            eye.parentNode.classList.remove('input-active')
+        })
+		eye.addEventListener('click', () => {
+			if (i) {
+				input.type = 'text'
+				eyeImg.src = './img/ClosedEye.png'
+				i = false
+			} else {
+				input.type = 'password'
+				eyeImg.src = './img/Eye.png'
+				i = true
+			}
+		})
+        function restrictInput(inputElement) {
+            const regex = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g
+
+            if (regex.test(inputElement.value)) {
+                inputElement.value = inputElement.value.replace(regex, '')
+            }
+        }
+
+        const inputs = document.querySelectorAll('.oEInput')
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                restrictInput(input)
+            })
+        })
+	</script>
 </body>
 </html>

@@ -18,11 +18,11 @@ $stmt->execute([$id]);
 $count = $stmt->fetchColumn();
 
 if ($id === 'admin') {
-  echo '<script>alert("사용할 수 없는 아이디입니다!")</script>';
+  $_SESSION['adminid'] = "This ID is not available!";
   echo '<script>location.href = "join.php"</script>';
   exit();
 } elseif ($count > 0) {
-  echo '<script>alert("이미 가입된 아이디입니다!")</script>';
+  $_SESSION['reduplication'] = "This ID has already been registered!";
   echo '<script>location.href = "join.php"</script>';
   exit();
 }
